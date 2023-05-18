@@ -2,8 +2,7 @@ namespace TravelWebApi.Models;
 
 public class Booking
 {
-
-    public String Code { get; set; }
+    public int BookingId { get; set; }
 
     public User User { get; set; }
 
