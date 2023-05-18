@@ -17,6 +17,8 @@ public class Trip
 
     public Boolean IsFull { get; set; }
 
+    public string Image { get; set; }
+
     public Trip()
     {
 
