@@ -14,6 +14,23 @@ namespace TravelWebApi.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    BookingId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FinalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Paid = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    TripId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.BookingId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Trips",
                 columns: table => new
                 {
@@ -49,53 +66,14 @@ namespace TravelWebApi.Migrations
                     table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Bookings",
-                columns: table => new
-                {
-                    BookingId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    TripId = table.Column<int>(type: "int", nullable: false),
-                    BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FinalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Paid = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bookings", x => x.BookingId);
-                    table.ForeignKey(
-                        name: "FK_Bookings_Trips_TripId",
-                        column: x => x.TripId,
-                        principalTable: "Trips",
-                        principalColumn: "TripId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Bookings_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "CreationDate", "Name", "Password", "Role", "Username" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 18, 19, 18, 51, 907, DateTimeKind.Local).AddTicks(4533), "Admin", "admin", true, "admin" },
-                    { 2, new DateTime(2023, 5, 18, 19, 18, 51, 907, DateTimeKind.Local).AddTicks(4567), "Ada", "ada", false, "ada" }
+                    { 1, new DateTime(2023, 5, 22, 23, 48, 32, 196, DateTimeKind.Local).AddTicks(9506), "Admin", "admin", true, "admin" },
+                    { 2, new DateTime(2023, 5, 22, 23, 48, 32, 196, DateTimeKind.Local).AddTicks(9556), "Ada", "ada", false, "ada" }
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Bookings_TripId",
-                table: "Bookings",
-                column: "TripId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Bookings_UserId",
-                table: "Bookings",
-                column: "UserId");
         }
 
         /// <inheritdoc />
