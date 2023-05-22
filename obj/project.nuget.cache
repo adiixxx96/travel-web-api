@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RFBphG7n81HplUFrk3uIDNlO6GzP/KuuBUfdPerbOAusThWZZuPRqwSVjj14lrTbJ2laH2GRvVdtCGFDX4pGMA==",
+  "dgSpecHash": "LkeqkQImKclLP7Mg+HQv1u5yj1y0uE82SeYOwMDnN1VL9osRDOrS6knHxO2+aladgZ+W6hnjAj/Cqb3suixXqQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\AdaPiedrafita-AA2EV\\TravelWebApi\\TravelWebApi.csproj",
   "expectedPackageFiles": [
@@ -49,6 +49,7 @@
     "C:\\Users\\rocky\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
     "C:\\Users\\rocky\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\rocky\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
+    "C:\\Users\\rocky\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\rocky\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
     "C:\\Users\\rocky\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
     "C:\\Users\\rocky\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",

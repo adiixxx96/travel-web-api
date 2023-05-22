@@ -12,7 +12,7 @@ using TravelWebApi.Data;
 namespace TravelWebApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230518171852_CreateInitialMigration")]
+    [Migration("20230522214832_CreateInitialMigration")]
     partial class CreateInitialMigration
     {
         /// <inheritdoc />
@@ -49,10 +49,6 @@ namespace TravelWebApi.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("BookingId");
-
-                    b.HasIndex("TripId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Bookings");
                 });
@@ -127,7 +123,7 @@ namespace TravelWebApi.Migrations
                         new
                         {
                             UserId = 1,
-                            CreationDate = new DateTime(2023, 5, 18, 19, 18, 51, 907, DateTimeKind.Local).AddTicks(4533),
+                            CreationDate = new DateTime(2023, 5, 22, 23, 48, 32, 196, DateTimeKind.Local).AddTicks(9506),
                             Name = "Admin",
                             Password = "admin",
                             Role = true,
@@ -136,31 +132,12 @@ namespace TravelWebApi.Migrations
                         new
                         {
                             UserId = 2,
-                            CreationDate = new DateTime(2023, 5, 18, 19, 18, 51, 907, DateTimeKind.Local).AddTicks(4567),
+                            CreationDate = new DateTime(2023, 5, 22, 23, 48, 32, 196, DateTimeKind.Local).AddTicks(9556),
                             Name = "Ada",
                             Password = "ada",
                             Role = false,
                             Username = "ada"
                         });
-                });
-
-            modelBuilder.Entity("TravelWebApi.Models.Booking", b =>
-                {
-                    b.HasOne("TravelWebApi.Models.Trip", "Trip")
-                        .WithMany()
-                        .HasForeignKey("TripId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TravelWebApi.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Trip");
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
