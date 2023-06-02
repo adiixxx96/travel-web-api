@@ -23,7 +23,7 @@ public class BookingController : ControllerBase
         return Ok(_context.Bookings);
     }
 
-    //Obtengo todas las reservas de un usuario
+    //Obtengo los viajes reservados por un usuario
     [HttpGet]
     [Route("bookings/user/{UserId}")]
     public ActionResult<List<Booking>> GetByUserId(int UserId)
@@ -64,27 +64,56 @@ public class BookingController : ControllerBase
     [Route("bookings/{UserId}/{TripId}")]
     public ActionResult NewBooking(int UserId, int TripId)
     {
-        Booking Booking = new Booking();
-        Booking.UserId = UserId;
-        Booking.TripId = TripId;
-        _context.Bookings.Add(Booking);
-        _context.SaveChanges();
-        var resourceUrl = Request.Path.ToString() + "/" + Booking.BookingId;
-        return Created(resourceUrl, Booking);
+        var existingBooking = _context.Bookings.SingleOrDefault(x => x.UserId == UserId && x.TripId == TripId);
+        if (existingBooking != null)
+        {
+            return Conflict("You have already booked this trip. Try with another one.");
+        }
+        else
+        {
+
+            Booking booking = new Booking();
+            var trip = _context.Trips.Find(TripId);
+            if (trip.AvailableSpots > 0)
+            {
+                trip.AvailableSpots = trip.AvailableSpots - 1;
+            }
+            if (trip.AvailableSpots == 0)
+            {
+                trip.IsFull = true;
+            }
+            _context.SaveChanges();
+            booking.UserId = UserId;
+            booking.TripId = TripId;
+            booking.BookingDate = DateTime.Now;
+            booking.FinalPrice = trip.Price;
+            _context.Bookings.Add(booking);
+            _context.SaveChanges();
+            var resourceUrl = Request.Path.ToString() + "/" + booking.BookingId;
+            return Created(resourceUrl, booking);
+        }
     }
 
     //Un usuario cancela una reserva
     [HttpDelete]
-    [Route("bookings/{BookingId}")]
-    public ActionResult DeleteBooking(int BookingId)
+    [Route("bookings/{UserId}/{TripId}")]
+    public ActionResult DeleteBooking(int UserId, int TripId)
     {
-        var existingBooking = _context.Bookings.Find(BookingId);
+        var existingBooking = _context.Bookings.SingleOrDefault(x => x.UserId == UserId && x.TripId == TripId);
         if (existingBooking == null)
         {
             return NotFound("Booking does not exist");
         }
         else
         {
+            var trip = _context.Trips.Find(existingBooking.TripId);
+            trip.AvailableSpots = trip.AvailableSpots + 1;
+            if (trip.AvailableSpots > 0)
+            {
+                trip.IsFull = false;
+            }
+            _context.SaveChanges();
+
             _context.Bookings.Remove(existingBooking);
             _context.SaveChanges();
             return NoContent();

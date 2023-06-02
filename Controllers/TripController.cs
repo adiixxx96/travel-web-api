@@ -14,8 +14,8 @@ public class TripController : ControllerBase
     {
         _context = context;
     }
-
-    //Obtengo todos los viajes
+    
+    //Obtengo todos los viajes con parámetros de búsqueda y de ordenación
     [HttpGet]
     [Route("trips")]
     public async Task<ActionResult<GenericFilter<Trip>>> Get(string search, string order = "TripId", string orderType = "ASC")
@@ -61,25 +61,11 @@ public class TripController : ControllerBase
                     _Trips = _Trips.OrderBy(x => x.StartDate).ToList();
                 break;
 
-            case "EndDate":
-                if (orderType.ToLower() == "desc")
-                    _Trips = _Trips.OrderByDescending(x => x.EndDate).ToList();
-                else if (orderType.ToLower() == "asc")
-                    _Trips = _Trips.OrderBy(x => x.EndDate).ToList();
-                break;
-
             case "Price":
                 if (orderType.ToLower() == "desc")
                     _Trips = _Trips.OrderByDescending(x => x.Price).ToList();
                 else if (orderType.ToLower() == "asc")
                     _Trips = _Trips.OrderBy(x => x.Price).ToList();
-                break;
-
-            case "AvailableSpots":
-                if (orderType.ToLower() == "desc")
-                    _Trips = _Trips.OrderByDescending(x => x.AvailableSpots).ToList();
-                else if (orderType.ToLower() == "asc")
-                    _Trips = _Trips.OrderBy(x => x.AvailableSpots).ToList();
                 break;
             
             default:
