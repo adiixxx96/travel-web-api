@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\Ada Piedrafita AA2EV\\TravelWebApi\\TravelWebApi.csproj": {}
+    "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\AdaPiedrafita-AA2EV\\TravelWebApi\\TravelWebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\Ada Piedrafita AA2EV\\TravelWebApi\\TravelWebApi.csproj": {
+    "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\AdaPiedrafita-AA2EV\\TravelWebApi\\TravelWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\Ada Piedrafita AA2EV\\TravelWebApi\\TravelWebApi.csproj",
+        "projectUniqueName": "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\AdaPiedrafita-AA2EV\\TravelWebApi\\TravelWebApi.csproj",
         "projectName": "TravelWebApi",
-        "projectPath": "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\Ada Piedrafita AA2EV\\TravelWebApi\\TravelWebApi.csproj",
+        "projectPath": "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\AdaPiedrafita-AA2EV\\TravelWebApi\\TravelWebApi.csproj",
         "packagesPath": "C:\\Users\\rocky\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\Ada Piedrafita AA2EV\\TravelWebApi\\obj\\",
+        "outputPath": "C:\\Users\\rocky\\OneDrive\\Desktop\\DAW\\Servidor\\AdaPiedrafita-AA2EV\\TravelWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rocky\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,9 +38,27 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [
